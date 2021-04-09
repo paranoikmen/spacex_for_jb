@@ -2,6 +2,7 @@ import './App.css';
 import {useEffect, useState} from "react";
 import "./Component/Style.css"
 import Row from "./Component/Row";
+import {DateNowTimer} from "./Component/DateTimer"
 
 function App() {
     const [data, setData] = useState([])
@@ -33,49 +34,6 @@ function App() {
             setData(tmp)
         }
 
-    }
-
-    const DateNowTimer = () => {
-        const [dateSeconds, setSeconds] = useState()
-        const [dateMinutes, setMinutes] = useState()
-        const [dateHours, setHours] = useState()
-        const [dateDays, setDays] = useState()
-        const [dateMonths, setMonths] = useState()
-        const [dateYears, setYears] = useState()
-
-        useEffect(() => {
-            const timer = setInterval(() => setSeconds(new Date().getSeconds()), 1000)
-            return () => { clearInterval(timer) }
-        }, [])
-        useEffect(() => {
-            const timer = setInterval(() => setMinutes(new Date().getMinutes()), 1000)
-            return () => { clearInterval(timer) }
-        }, [])
-        useEffect(() => {
-            const timer = setInterval(() => setHours(new Date().getHours()), 1000)
-            return () => { clearInterval(timer) }
-        }, [])
-        useEffect(() => {
-            const timer = setInterval(() => setDays(new Date().getDate()), 1000)
-            return () => { clearInterval(timer) }
-        }, [])
-        useEffect(() => {
-            const timer = setInterval(() => setMonths(new Date().getMonth()+1), 1000)
-            return () => { clearInterval(timer) }
-        }, [])
-        useEffect(() => {
-            const timer = setInterval(() => setYears(new Date().getFullYear()), 1000)
-            return () => { clearInterval(timer) }
-        }, [])
-
-        return <div>
-            <div>
-                {dateHours}:{dateMinutes}:{dateSeconds}
-            </div>
-            <div>
-                {dateDays}.{dateMonths}.{dateYears}
-            </div>
-        </div>
     }
 
     async function loadDataFromSite() {
